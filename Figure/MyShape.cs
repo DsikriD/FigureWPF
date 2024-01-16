@@ -21,45 +21,45 @@ namespace Figure
     {
         Ellipse elipse = new Ellipse();
 
-        protected override Geometry DefiningGeometry => elipse.RenderedGeometry;
-
-        public override Shape getFigure()
+        public MyElipse()
         {
             elipse.Height = 30;
             elipse.Width = 30;
             elipse.StrokeThickness = 1;
             elipse.Fill = Brushes.Red;
             elipse.Stroke = Brushes.Green;
-            return elipse;
         }
+
+
+        protected override Geometry DefiningGeometry => elipse.RenderedGeometry;
+
+        public override Shape getFigure() => elipse;
     }
 
     public class MyRectangle : MyShape
     {
         Rectangle rect = new Rectangle();
 
-        protected override Geometry DefiningGeometry => rect.RenderedGeometry;
-
-        public override Shape getFigure()
+        public MyRectangle()
         {
             rect.Height = 30;
             rect.Width = 30;
             rect.StrokeThickness = 1;
             rect.Fill = Brushes.Red;
             rect.Stroke = Brushes.Green;
-            return  rect;
         }
+        protected override Geometry DefiningGeometry => rect.RenderedGeometry;
+
+        public override Shape getFigure() => rect;
     }
 
     public class MyTriangular : MyShape
     {
         Polygon trin = new Polygon();
 
-        protected override Geometry DefiningGeometry => trin.RenderedGeometry;
 
-        public override Shape getFigure()
+        public MyTriangular()
         {
-
             trin.StrokeThickness = 1;
             trin.Fill = Brushes.Red;
             trin.Stroke = Brushes.Green;
@@ -72,26 +72,29 @@ namespace Figure
             };
 
             trin.Points = PointsSector;
-            return trin;
         }
+
+        protected override Geometry DefiningGeometry => trin.RenderedGeometry;
+
+        public override Shape getFigure() => trin;
     }
 
     public class MyOval : MyShape
     {
         Ellipse elipse = new Ellipse();
 
-        protected override Geometry DefiningGeometry => elipse.RenderedGeometry;
-
-        public override Shape getFigure()
+        public MyOval()
         {
             elipse.Height = 30;
             elipse.Width = 50;
             elipse.StrokeThickness = 1;
             elipse.Fill = Brushes.Red;
             elipse.Stroke = Brushes.Green;
-            return elipse;
         }
 
+        protected override Geometry DefiningGeometry => elipse.RenderedGeometry;
+
+        public override Shape getFigure() => elipse;
     }
 
 
