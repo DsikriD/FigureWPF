@@ -25,11 +25,12 @@ namespace Figure
         public string ?getDecription() => description; 
 
         public Shape getFigure() => figure;
+
+        protected override Geometry DefiningGeometry => figure.RenderedGeometry;
     }
 
     public class MyElipse : MyShape
     {
-
         public MyElipse() : base ("Это круг", new Ellipse())
         {
             figure.Height = 30;
@@ -38,14 +39,10 @@ namespace Figure
             figure.Fill = Brushes.Red;
             figure.Stroke = Brushes.Green;
         }
- 
-        protected override Geometry DefiningGeometry => figure.RenderedGeometry;
-
     }
 
     public class MyRectangle : MyShape
     {
-  
         public MyRectangle() : base ("Это квадрат", new Rectangle())
         {
             figure.Height = 30;
@@ -54,8 +51,6 @@ namespace Figure
             figure.Fill = Brushes.Red;
             figure.Stroke = Brushes.Green;
         }
-        protected override Geometry DefiningGeometry => figure.RenderedGeometry;
-
     }
 
     public class MyTriangular : MyShape
@@ -78,14 +73,10 @@ namespace Figure
 
             figure = polygon;
         }
-
-        protected override Geometry DefiningGeometry => figure.RenderedGeometry;
-
     }
 
     public class MyOval : MyShape
     {
-
         public MyOval() : base ("Это овал", new Ellipse())
         {
             figure.Height = 30;
@@ -94,7 +85,6 @@ namespace Figure
             figure.Fill = Brushes.Red;
             figure.Stroke = Brushes.Green;
         }
-        protected override Geometry DefiningGeometry => figure.RenderedGeometry;
     }
 
 }
