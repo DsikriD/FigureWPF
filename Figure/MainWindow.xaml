@@ -7,10 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Canvas Name="cnv" Width="400" Height="400" Background="Gray"/>
+        <Canvas Name="cnv" Width="300" Height="300" Background="Gray"/>
         <Button Content="Draw" HorizontalAlignment="Left" Margin="22,17,0,0" VerticalAlignment="Top" Height="30" Width="67" Click="Button_Click"/>
         <Button Content="Clear" HorizontalAlignment="Left" Margin="22,156,0,0" VerticalAlignment="Top" Height="30" Width="67" Click="Button_Click_1" />
         <ComboBox Name="cmb" HorizontalAlignment="Left" Margin="22,61,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
-        
+        <Label Name="lbl" Content="Label" HorizontalAlignment="Left" Margin="250,32,0,0" VerticalAlignment="Top" Width="120"/>
+
+
     </Grid>
 </Window>

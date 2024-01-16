@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,59 +11,62 @@ using System.Windows.Shapes;
 namespace Figure
 {
     
-
     public abstract class MyShape : Shape
     {
-        public abstract Shape getFigure();
+        protected string ?description;
+        protected Shape figure;
 
+        public MyShape(string decription,Shape figure)
+        {
+            this.description = decription;
+            this.figure = figure;   
+        }
+
+        public string ?getDecription() => description; 
+
+        public Shape getFigure() => figure;
     }
 
     public class MyElipse : MyShape
     {
-        Ellipse elipse = new Ellipse();
 
-        public MyElipse()
+        public MyElipse() : base ("Это круг", new Ellipse())
         {
-            elipse.Height = 30;
-            elipse.Width = 30;
-            elipse.StrokeThickness = 1;
-            elipse.Fill = Brushes.Red;
-            elipse.Stroke = Brushes.Green;
+            figure.Height = 30;
+            figure.Width = 30;
+            figure.StrokeThickness = 1;
+            figure.Fill = Brushes.Red;
+            figure.Stroke = Brushes.Green;
         }
+ 
+        protected override Geometry DefiningGeometry => figure.RenderedGeometry;
 
-
-        protected override Geometry DefiningGeometry => elipse.RenderedGeometry;
-
-        public override Shape getFigure() => elipse;
     }
 
     public class MyRectangle : MyShape
     {
-        Rectangle rect = new Rectangle();
-
-        public MyRectangle()
+  
+        public MyRectangle() : base ("Это квадрат", new Rectangle())
         {
-            rect.Height = 30;
-            rect.Width = 30;
-            rect.StrokeThickness = 1;
-            rect.Fill = Brushes.Red;
-            rect.Stroke = Brushes.Green;
+            figure.Height = 30;
+            figure.Width = 30;
+            figure.StrokeThickness = 1;
+            figure.Fill = Brushes.Red;
+            figure.Stroke = Brushes.Green;
         }
-        protected override Geometry DefiningGeometry => rect.RenderedGeometry;
+        protected override Geometry DefiningGeometry => figure.RenderedGeometry;
 
-        public override Shape getFigure() => rect;
     }
 
     public class MyTriangular : MyShape
     {
-        Polygon trin = new Polygon();
-
-
-        public MyTriangular()
+  
+        public MyTriangular() : base ("Это треугольник", new Polygon())
         {
-            trin.StrokeThickness = 1;
-            trin.Fill = Brushes.Red;
-            trin.Stroke = Brushes.Green;
+            Polygon polygon = new Polygon();
+            polygon.StrokeThickness = 1;
+            polygon.Fill = Brushes.Red;
+            polygon.Stroke = Brushes.Green;
 
             var PointsSector = new PointCollection()
             {
@@ -70,33 +74,27 @@ namespace Figure
                 new Point(30,0),
                 new Point(0,0),
             };
+            polygon.Points = PointsSector;
 
-            trin.Points = PointsSector;
+            figure = polygon;
         }
 
-        protected override Geometry DefiningGeometry => trin.RenderedGeometry;
+        protected override Geometry DefiningGeometry => figure.RenderedGeometry;
 
-        public override Shape getFigure() => trin;
     }
 
     public class MyOval : MyShape
     {
-        Ellipse elipse = new Ellipse();
 
-        public MyOval()
+        public MyOval() : base ("Это овал", new Ellipse())
         {
-            elipse.Height = 30;
-            elipse.Width = 50;
-            elipse.StrokeThickness = 1;
-            elipse.Fill = Brushes.Red;
-            elipse.Stroke = Brushes.Green;
+            figure.Height = 30;
+            figure.Width = 50;
+            figure.StrokeThickness = 1;
+            figure.Fill = Brushes.Red;
+            figure.Stroke = Brushes.Green;
         }
-
-        protected override Geometry DefiningGeometry => elipse.RenderedGeometry;
-
-        public override Shape getFigure() => elipse;
+        protected override Geometry DefiningGeometry => figure.RenderedGeometry;
     }
-
-
 
 }
